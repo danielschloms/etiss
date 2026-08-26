@@ -151,4 +151,8 @@ endif()
 ####################################################################################################
 # Softvector library, implements RVV
 # Makes CMake target softvector
-add_subdirectory(softvector)
+if(CMAKE_CXX_STANDARD LESS 20)
+    message(WARNING "Softvector requires C++20.")
+else()
+    add_subdirectory(softvector)
+endif()
